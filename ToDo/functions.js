@@ -50,7 +50,6 @@ function viewTodoList(itemsType) {
             var completed_todos = todoItems.filter(function(todoItem) {
             return todoItem.completed === true;
             });
-            //console.log(completed_todos);
             tempTodoList = completed_todos;
             break;
 
@@ -58,12 +57,10 @@ function viewTodoList(itemsType) {
             var not_completed_todos = todoItems.filter(function(todoItem) {
             return todoItem.completed === false;
             });
-            //console.log(not_completed_todos);
             tempTodoList = not_completed_todos;
             break;
             
         default:
-            //console.log(todoItems);
             break;
     }
     
@@ -101,8 +98,6 @@ function deleteTodoItem(todoItemId) {
             }
         });
         todoItems.splice(index , 1);
-        console.log(todoItems);
-        console.log(index);
         return true;
     }
 }
