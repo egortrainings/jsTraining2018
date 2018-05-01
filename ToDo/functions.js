@@ -5,13 +5,12 @@ function findTodoById(todoItemId) {
 }
 
 function isValidTodo(todoItem, isEdit) {
-    console.log(todoItem);
-    if (todoItem.text === null || todoItem.text === '') {
+    if (!todoItem.text || todoItem.text === null || todoItem.text === '') {
         var err_msg = 'Text cannot be empty';
         return err_msg;
         }
     else {
-        if (todoItem.completed === null) {
+        if (!todoItem.completed) {
         var err_msg = 'Completed is required';
         return err_msg;
         }
@@ -36,11 +35,12 @@ function isValidTodo(todoItem, isEdit) {
 }
 
 function addTodoItem(todoItem) {
-    if (isValidTodo(todoItem)) {
+    if (isValidTodo(todoItem) === true) {
         todoItems.push(todoItem);
         return true;
+    } else {
+        return (isValidTodo(todoItem));
     }
-    return (isValidTodo(todoItem));
 }
 
 function viewTodoList(itemsType) {
