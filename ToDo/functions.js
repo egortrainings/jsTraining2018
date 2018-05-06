@@ -90,7 +90,7 @@ const deleteTodoItem = todoItemId => {
                 index = i;
                 return true;
             }
-        });
+        };
         todoItems.splice(index , 1);
         console.log(`Todo deleted ${todoItem} . Todo list: ${todoItems}`);
         return true;
