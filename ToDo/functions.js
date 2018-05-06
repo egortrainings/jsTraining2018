@@ -33,6 +33,7 @@ const isValidTodo = (todoItem, isEdit) => {
 const addTodoItem = todoItem => {
     if (isValidTodo(todoItem) === true) {
         todoItems.push(todoItem);
+        console.log(`New Todo added ${todoItem} . Todo list: ${todoItems}`);
         return true;
     } else {
         return (isValidTodo(todoItem));
@@ -71,6 +72,7 @@ const editTodoList = (todoItemId, newText) => {
         }
         else {
         todoItem.text = newText;
+        console.log(`Todo updated ${todoItem} . Todo list: ${todoItems}`);
         return true;
         }
     }                
@@ -83,13 +85,14 @@ const deleteTodoItem = todoItemId => {
         return false;
     } else {
         let index;
-        todoItems.some(function (element, i) {
+        todoItems.some = (element, i) => {
             if (element.id === todoItemId) {
                 index = i;
                 return true;
             }
         });
         todoItems.splice(index , 1);
+        console.log(`Todo deleted ${todoItem} . Todo list: ${todoItems}`);
         return true;
     }
 }
@@ -101,6 +104,7 @@ const completeTodoItem = todoItemId => {
         return false;
     } else {
         todoItem.completed = true;
+        console.log(`Todo completed ${todoItem} . Todo list: ${todoItems}`);
         return true;
     }   
 }
