@@ -1,19 +1,15 @@
-function splitToPosAndNeg(arr) {
+const splitToPosAndNeg = arr => {
     
-    var positiveArr = arr.filter(function(number) {
-    return number > 0;
-    });
+    let positiveArr = arr.filter(number => number > 0);
     
-    var negativeArr = arr.filter(function(number) {
-    return number < 0;
-    });
+    let negativeArr = arr.filter(number => number < 0);
 
-    console.log('Array B positive: ' + positiveArr);
-    console.log('Array C negative: ' + negativeArr);
+    console.log(`Array B positive: ${positiveArr}`);
+    console.log(`Array C negative: ${negativeArr}`);
 }
 
-function countArrValues (arr) {
-    var valuesCount = arr.reduce(function (uniqueValues, value) {
+const countArrValues = arr => {
+    let valuesCount = arr.reduce((uniqueValues, value) => {
     uniqueValues[value] = (uniqueValues[value] || 0 ) + 1;
     return uniqueValues;
     }, {});
@@ -21,7 +17,7 @@ function countArrValues (arr) {
     console.log(valuesCount);
 }
 
-var arr = [3.14, 2, 1, -1, 2, -2, 1, 3, 4, 1];
+let arr = [3.14, 2, 1, -1, 2, -2, 1, 3, 4, 1];
 
 splitToPosAndNeg(arr);
 countArrValues(arr);
