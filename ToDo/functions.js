@@ -85,12 +85,12 @@ const deleteTodoItem = todoItemId => {
         return false;
     } else {
         let index;
-        todoItems.some = (element, i) => {
+        todoItems.some( (element, i) => {
             if (element.id === todoItemId) {
                 index = i;
                 return true;
             }
-        };
+        });
         todoItems.splice(index , 1);
         console.log(`Todo deleted ${JSON.stringify(todoItem)} . Todo list: ${JSON.stringify(todoItems)}`);
         return true;
