@@ -1,4 +1,4 @@
-const findTodoById = todoItemId => todoItems.filter(todoItem => todoItem.id === todoItemId)[0]; 
+const findTodoById = todoItemId => (todoItems.filter(todoItem => todoItem.id === todoItemId)[0]); 
 
 const isValidTodo = (todoItem, isEdit) => {
     if (!todoItem.text || todoItem.text === null || todoItem.text === '') {
@@ -6,7 +6,7 @@ const isValidTodo = (todoItem, isEdit) => {
         return err_msg;
         }
     else {
-        if (!todoItem.completed) {
+        if (todoItem.completed === null || todoItem.completed === '') {
         let err_msg = `Completed is required`;
         return err_msg;
         }

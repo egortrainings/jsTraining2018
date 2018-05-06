@@ -1,9 +1,9 @@
 let todoItems = [];
 
-initToDos = function() {
+let initTodoItems = function() {
 		$.getJSON( "todos.json", function(data) {
 			todoItems = data.data;
 		});
 	};
-    
-initToDos();
+
+initTodoItems();
