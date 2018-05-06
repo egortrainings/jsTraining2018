@@ -33,7 +33,7 @@ const isValidTodo = (todoItem, isEdit) => {
 const addTodoItem = todoItem => {
     if (isValidTodo(todoItem) === true) {
         todoItems.push(todoItem);
-        console.log(`New Todo added ${todoItem} . Todo list: ${todoItems}`);
+        console.log(`New Todo added ${JSON.stringify(todoItem)} . Todo list: ${JSON.stringify(todoItems)}`);
         return true;
     } else {
         return (isValidTodo(todoItem));
@@ -72,7 +72,7 @@ const editTodoList = (todoItemId, newText) => {
         }
         else {
         todoItem.text = newText;
-        console.log(`Todo updated ${todoItem} . Todo list: ${todoItems}`);
+        console.log(`Todo updated ${JSON.stringify(todoItem)} . Todo list: ${JSON.stringify(todoItems)}`);
         return true;
         }
     }                
@@ -92,7 +92,7 @@ const deleteTodoItem = todoItemId => {
             }
         };
         todoItems.splice(index , 1);
-        console.log(`Todo deleted ${todoItem} . Todo list: ${todoItems}`);
+        console.log(`Todo deleted ${JSON.stringify(todoItem)} . Todo list: ${JSON.stringify(todoItems)}`);
         return true;
     }
 }
@@ -104,7 +104,7 @@ const completeTodoItem = todoItemId => {
         return false;
     } else {
         todoItem.completed = true;
-        console.log(`Todo completed ${todoItem} . Todo list: ${todoItems}`);
+        console.log(`Todo completed ${JSON.stringify(todoItem)} . Todo list: ${JSON.stringify(todoItems)}`);
         return true;
     }   
 }
