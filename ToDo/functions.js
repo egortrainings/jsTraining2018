@@ -1,29 +1,25 @@
-function findTodoById(todoItemId) {
-    return todoItems.filter(function(todoItem) {
-        return todoItem.id === todoItemId;        
-    })[0]; 
-}
+const findTodoById = todoItemId => todoItems.filter(todoItem => todoItem.id === todoItemId)[0]; 
 
-function isValidTodo(todoItem, isEdit) {
+const isValidTodo = (todoItem, isEdit) => {
     if (!todoItem.text || todoItem.text === null || todoItem.text === '') {
-        var err_msg = 'Text cannot be empty';
+        let err_msg = `Text cannot be empty`;
         return err_msg;
         }
     else {
         if (!todoItem.completed) {
-        var err_msg = 'Completed is required';
+        let err_msg = `Completed is required`;
         return err_msg;
         }
     
     else {
         if (!todoItem.id) {
-        var err_msg = 'Id is required';
+        let err_msg = `Id is required`;
         return err_msg;
         }
     
     else {
         if ((findTodoById(todoItem.id)) && (!isEdit)) {
-            var err_msg = 'Id should be unique';
+            let err_msg = `Id should be unique`;
             return err_msg;
         }
     
@@ -34,7 +30,7 @@ function isValidTodo(todoItem, isEdit) {
 }
 }
 
-function addTodoItem(todoItem) {
+const addTodoItem = todoItem => {
     if (isValidTodo(todoItem) === true) {
         todoItems.push(todoItem);
         return true;
@@ -43,20 +39,16 @@ function addTodoItem(todoItem) {
     }
 }
 
-function viewTodoList(itemsType) {
-    var tempTodoList = todoItems;
+const viewTodoList = itemsType => {
+    let tempTodoList = todoItems;
     switch (itemsType) {
         case 'completed':
-            var completed_todos = todoItems.filter(function(todoItem) {
-            return todoItem.completed === true;
-            });
+            let completed_todos = todoItems.filter(todoItem => todoItem.completed === true );
             tempTodoList = completed_todos;
             break;
 
         case 'not_completed':
-            var not_completed_todos = todoItems.filter(function(todoItem) {
-            return todoItem.completed === false;
-            });
+            let not_completed_todos = todoItems.filter(todoItem => todoItem.completed === false );
             tempTodoList = not_completed_todos;
             break;
             
@@ -67,14 +59,14 @@ function viewTodoList(itemsType) {
     return tempTodoList;
 } 
 
-function editTodoList(todoItemId, newText) {
-    var todoItem = findTodoById(todoItemId);
+const editTodoList = (todoItemId, newText) => {
+    let todoItem = findTodoById(todoItemId);
     if (!todoItem) {
-        console.log('Todo item not found');
+        console.log(`Todo item not found`);
         return false;
     } else {
         if (!newText) {
-            console.log('Text cannot be empty');
+            console.log(`Text cannot be empty`);
             return false;
         }
         else {
@@ -84,13 +76,13 @@ function editTodoList(todoItemId, newText) {
     }                
 }
 
-function deleteTodoItem(todoItemId) {
-    var todoItem = findTodoById(todoItemId);
+const deleteTodoItem = todoItemId => {
+    let todoItem = findTodoById(todoItemId);
     if (!todoItem) {
-        console.log('Todo item not found');
+        console.log(`Todo item not found`);
         return false;
     } else {
-        var index;
+        let index;
         todoItems.some(function (element, i) {
             if (element.id === todoItemId) {
                 index = i;
@@ -102,10 +94,10 @@ function deleteTodoItem(todoItemId) {
     }
 }
 
-function completeTodoItem(todoItemId) {
-    var todoItem = findTodoById(todoItemId);
+const completeTodoItem = todoItemId => {
+    let todoItem = findTodoById(todoItemId);
     if (!todoItem) {
-        console.log('Todo item not found');
+        console.log(`Todo item not found`);
         return false;
     } else {
         todoItem.completed = true;
