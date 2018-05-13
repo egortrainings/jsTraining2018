@@ -1,3 +1,12 @@
+let todoItems = [];
+
+let initTodoItems = function() {
+		$.getJSON( "todos.json", function(data) {
+			todoItems = data.data;
+            viewTodoList();
+		});
+	};
+
 const findTodoById = todoItemId => (todoItems.filter(todoItem => todoItem.id === todoItemId)[0]); 
 
 const isValidTodo = (todoItem, isEdit) => {
@@ -116,6 +125,7 @@ const completeTodoItem = todoItemId => {
 
 
 function initPageElements() {
+    console.log('initPageElements');
     const allBtn = document.getElementById('allBtn');
     const completedBtn = document.getElementById('completedBtn');
     const notCompletedBtn = document.getElementById('notCompletedBtn');
