@@ -10,13 +10,34 @@
 </head>
 
 <body>
+
+    <div id="view-mode">
+        <label><input id="allBtn" type="radio" name="viewmode" value="all" checked>all</label>
+        <label><input id="completedBtn" type="radio" name="viewmode" value="completed">completed</label>
+        <label><input id="notCompletedBtn"  type="radio" name="viewmode" value="not_completed">not completed</label>
+    </div>
+        <input id="newTodoInput" type="text" name="newTodoInput">
+        <button id="newTodoBtn" type="button">Add Todo</button>
+        
+    <div id="new-todo">
+        
+    </div>
+
     <div id="todo-items"></div>
+    
 </body>
 <script src="dom.js"></script>    
 <script src="functions.js"></script>    
 <script src="jquery-3.3.1.min.js"></script>
 <script src="todos.json"></script>    
 <script src="script.js"></script>
-<script src="test.js"></script>   
+<script src="test.js"></script> 
+
+<script>    
+ $(document).ready(function(){
+     initPageElements(); 
+
+});
+</script>
 
 </html>

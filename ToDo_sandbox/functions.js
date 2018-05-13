@@ -114,3 +114,79 @@ const completeTodoItem = todoItemId => {
     }   
 }
 
+
+const initPageElements = () => {
+    const allBtn = document.getElementById('allBtn');
+    const completedBtn = document.getElementById('completedBtn');
+    const notCompletedBtn = document.getElementById('notCompletedBtn');
+
+    allBtn.onclick = allBtnHandler;
+    function allBtnHandler() { viewTodoList('all') };
+
+    completedBtn.onclick = completedBtnHandler;
+    function completedBtnHandler() { viewTodoList('completed') };
+    
+    notCompletedBtn.onclick = notCompletedBtnHandler;
+    function notCompletedBtnHandler() { viewTodoList('not_completed') };
+    
+    
+    const newTodoTextInput = document.getElementById('newTodoInput');
+    const newTodoBtn = document.getElementById('newTodoBtn');
+    newTodoBtn.onclick = addToDoHandler;
+    
+    newTodoTextInput.addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            newTodoBtn.click();
+        }
+    });
+    
+    const todoDiv = document.getElementById('todo-items');
+    todoDiv.addEventListener('click', function(event) {
+        if(event.target.name == 'isCompleted'){
+            completeTodoItem(parseInt(event.target.parentNode.id));
+        }
+        if(event.target.name == 'deleteBtn'){
+            deleteTodoItem(parseInt(event.target.parentNode.id));
+        }
+        
+        if(event.target.name == 'updateBtn'){
+            editTodoItem(parseInt(event.target.parentNode.id), event.target.parentNode.querySelector('input[name="text"]').value);
+        }
+    })
+    
+    
+}
+
+
+function getNewId() {
+    let id = 1;
+    if (todoItems.length > 0) {
+            todoItemMaxId = todoItems.reduce((prev, current) => {
+            return (prev.id > current.id) ? prev : current
+            })
+            id = todoItemMaxId.id + 1;
+    }
+    return id;
+    
+    
+}
+
+function addToDoHandler () {
+    let newTodoText = document.getElementById('newTodoInput').value;
+    let id = getNewId();
+    let newTodoItem = {id: id, 
+                       text: newTodoText, 
+                       isCompleted: false};
+    
+    addTodoItem(newTodoItem);
+}
+    
+
+
+
+
+
+
+
+
