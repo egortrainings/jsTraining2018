@@ -115,7 +115,7 @@ const completeTodoItem = todoItemId => {
 }
 
 
-const initPageElements = () => {
+function initPageElements() {
     const allBtn = document.getElementById('allBtn');
     const completedBtn = document.getElementById('completedBtn');
     const notCompletedBtn = document.getElementById('notCompletedBtn');
@@ -124,7 +124,7 @@ const initPageElements = () => {
     function allBtnHandler() { viewTodoList('all') };
 
     completedBtn.onclick = completedBtnHandler;
-    function completedBtnHandler() { viewTodoList('completed') };
+    function completedBtnHandler() { viewTodoList('completed')  };
     
     notCompletedBtn.onclick = notCompletedBtnHandler;
     function notCompletedBtnHandler() { viewTodoList('not_completed') };
@@ -177,7 +177,7 @@ function addToDoHandler () {
     let id = getNewId();
     let newTodoItem = {id: id, 
                        text: newTodoText, 
-                       isCompleted: false};
+                       completed: false};
     
     addTodoItem(newTodoItem);
 }
