@@ -42,7 +42,7 @@ const isValidTodo = (todoItem, isEdit) => {
 const addTodoItem = todoItem => {
     if (isValidTodo(todoItem) === true) {
         todoItems.push(todoItem);
-        addTodoItemDom(todoItem);
+        if (allBtn.checked === true || notCompletedBtn.checked === true) addTodoItemDom(todoItem);
         console.log(`New Todo added ${JSON.stringify(todoItem)} . Todo list: ${JSON.stringify(todoItems)}`);
         return true;
     } else {
@@ -117,7 +117,8 @@ const completeTodoItem = todoItemId => {
         return false;
     } else {
         todoItem.completed = true;
-        completeTodoItemDom(todoItemId);
+        if (allBtn.checked === true) { completeTodoItemDom(todoItemId)};
+        if (notCompletedBtn.checked === true) { deleteTodoItemDom(todoItemId)};
         console.log(`Todo completed ${JSON.stringify(todoItem)} . Todo list: ${JSON.stringify(todoItems)}`);
         return true;
     }   
@@ -125,7 +126,7 @@ const completeTodoItem = todoItemId => {
 
 
 function initPageElements() {
-    console.log('initPageElements');
+
     const allBtn = document.getElementById('allBtn');
     const completedBtn = document.getElementById('completedBtn');
     const notCompletedBtn = document.getElementById('notCompletedBtn');
@@ -172,7 +173,7 @@ function initPageElements() {
 function getNewId() {
     let id = 1;
     if (todoItems.length > 0) {
-            todoItemMaxId = todoItems.reduce((prev, current) => {
+            let todoItemMaxId = todoItems.reduce((prev, current) => {
             return (prev.id > current.id) ? prev : current
             })
             id = todoItemMaxId.id + 1;
